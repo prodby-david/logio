@@ -1,45 +1,13 @@
-import type { TimeLog } from "../types/hero.types";
+import { logs } from "../constants/Logs";
 
 export default function HeroMockup() {
   const isClockedIn = false;
   const progressHours = 182.5;
-
-  const logs: TimeLog[] = [
-    {
-      id: "log-1",
-      date: "May 28, 2026",
-      task: "Assisted in API Integration and CORS setup",
-      hours: 8.0,
-      status: "approved",
-    },
-    {
-      id: "log-2",
-      date: "May 27, 2026",
-      task: "Designed and implemented new register page UI",
-      hours: 8.5,
-      status: "approved",
-    },
-    {
-      id: "log-3",
-      date: "May 26, 2026",
-      task: "Configured RouteServiceProvider and AppServiceProvider",
-      hours: 8.0,
-      status: "pending",
-    },
-    {
-      id: "log-4",
-      date: "May 25, 2026",
-      task: "Created database migrations and user table schema",
-      hours: 8.0,
-      status: "approved",
-    },
-  ];
-
   const targetHours = 300;
   const progressPercent = Math.min((progressHours / targetHours) * 100, 100);
 
   return (
-    <div className="w-full rounded-2xl bg-background-card border border-border-card shadow-2xl relative overflow-hidden group">
+    <div className="w-full rounded-2xl bg-background-card border border-border-card shadow-md relative overflow-hidden group">
       <div className="flex items-center justify-between px-4 py-3 bg-background-main/30 border-b border-border-card">
         <div className="flex items-center gap-1.5">
           <span className="w-3 h-3 rounded-full bg-red-500/80"></span>
@@ -57,29 +25,29 @@ export default function HeroMockup() {
           <div className="p-5 rounded-xl bg-background-input/40 border border-border-input/40 flex flex-col items-center justify-center relative overflow-hidden text-center">
             <span className="absolute top-3 left-3 flex h-2 w-2">
               <span
-                className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isClockedIn ? "bg-accent-emerald" : "bg-red-400"}`}
+                className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isClockedIn ? "bg-emerald-400" : "bg-accent-cyan/20"}`}
               ></span>
               <span
-                className={`relative inline-flex rounded-full h-2 w-2 ${isClockedIn ? "bg-accent-emerald" : "bg-red-500"}`}
+                className={`relative inline-flex rounded-full h-2 w-2 ${isClockedIn ? "bg-emerald-500" : "bg-accent-cyan"}`}
               ></span>
             </span>
 
-            <span className="text-xs font-semibold uppercase tracking-widest text-text-muted">
-              {isClockedIn ? "Active OJT Session" : "Session Paused"}
+            <span className="text-xs font-semibold text-text-muted">
+              {isClockedIn ? "Active Session" : "Session Paused"}
             </span>
 
-            <span className="text-3xl sm:text-4xl font-extrabold text-text-primary font-mono tracking-tight my-4">
+            <span className="text-3xl sm:text-4xl font-extrabold text-text-primary font-mono my-4">
               04:32:18
             </span>
 
-            <button className="w-full py-2.5 px-4 rounded-lg font-semibold text-sm transition-all duration-300 bg-gradient-to-r from-accent-indigo to-accent-emerald text-text-primary shadow-lg shadow-accent-indigo/25">
+            <button className="w-full py-2.5 px-4 rounded-lg font-semibold text-sm transition-all duration-300 bg-accent-violet hover:bg-accent-violet-hover text-white shadow-sm shadow-accent-violet/10 cursor-pointer">
               Clock In Session
             </button>
           </div>
 
           <div className="p-5 rounded-xl bg-background-input/40 border border-border-input/40 flex flex-col">
-            <span className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-3">
-              OJT Hours Milestone
+            <span className="text-xs font-semibold text-text-muted mb-3">
+              Hours Milestone
             </span>
             <div className="flex items-baseline justify-between mb-2">
               <span className="text-2xl font-bold text-text-primary">
@@ -92,14 +60,14 @@ export default function HeroMockup() {
 
             <div className="w-full h-2.5 rounded-full bg-background-card/50 overflow-hidden relative border border-border-card">
               <div
-                className="h-full bg-gradient-to-r from-accent-indigo to-accent-emerald transition-all duration-500"
+                className="h-full bg-accent-violet transition-all duration-500"
                 style={{ width: `${progressPercent}%` }}
               ></div>
             </div>
 
-            <div className="flex justify-between items-center mt-3 text-[10px] sm:text-xs font-medium text-text-muted">
+            <div className="flex justify-between items-center mt-3 text-xs sm:text-xs font-medium text-text-muted">
               <span>{progressPercent.toFixed(1)}% Completed</span>
-              <span className="text-accent-emerald">
+              <span className="text-accent-cyan">
                 {(targetHours - progressHours).toFixed(1)}h Left
               </span>
             </div>
@@ -108,10 +76,10 @@ export default function HeroMockup() {
 
         <div className="md:col-span-7 flex flex-col">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-text-muted">
+            <span className="text-xs font-semibold text-text-muted">
               Recent Time Logs
             </span>
-            <span className="text-[10px] text-accent-indigo font-bold uppercase tracking-widest cursor-pointer hover:underline">
+            <span className="text-xs text-accent-violet font-bold cursor-pointer hover:underline">
               View All Logs
             </span>
           </div>
@@ -126,7 +94,7 @@ export default function HeroMockup() {
                   <span className="text-xs font-semibold text-text-primary truncate">
                     {log.task}
                   </span>
-                  <span className="text-[10px] text-text-placeholder mt-0.5">
+                  <span className="text-xs text-text-placeholder mt-0.5">
                     {log.date}
                   </span>
                 </div>
@@ -137,9 +105,9 @@ export default function HeroMockup() {
                   </span>
 
                   <span
-                    className={`text-[9px] uppercase font-bold tracking-widest px-2 py-1 rounded-md ${
-                      log.status === "approved"
-                        ? "bg-accent-emerald/10 border border-accent-emerald/20 text-accent-emerald"
+                    className={`text-xs font-bold px-2 py-1 rounded-md ${
+                      log.status === "Approved"
+                        ? "bg-emerald-500/10 border border-emerald-500/20 text-emerald-400"
                         : "bg-yellow-500/10 border border-yellow-500/20 text-yellow-500"
                     }`}
                   >

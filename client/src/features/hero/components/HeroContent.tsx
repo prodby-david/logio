@@ -1,45 +1,42 @@
-interface HeroContentProps {
-  onStartClick?: () => void;
-}
+import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 
-export default function HeroContent({ onStartClick }: HeroContentProps) {
+export default function HeroContent() {
   return (
     <div className="flex flex-col items-start text-left max-w-2xl">
-      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-text-primary leading-[1.1] mb-6">
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-text-primary leading-[1.1] mb-6">
         Clock In.
         <br />
-        Log Hours.
+        Track Time.
         <br />
-        <span className="bg-gradient-to-r from-accent-indigo to-accent-emerald bg-clip-text text-transparent">
-          Graduate.
+        <span className="text-accent-violet">
+          Achieve.
         </span>
       </h1>
-      
+
       <p className="text-base sm:text-lg text-text-muted mb-8 leading-relaxed max-w-lg">
-        Logio is the ultimate OJT time tracker built specifically for students. 
-        Track your training hours with a single tap, generate coordinator-ready 
-        timesheets, and focus on what matters most—your learning.
+        Logio is the ultimate time tracker built to help you reach your goals.
+        Track your hours on any project, set your target milestones, generate
+        professional timesheets, and focus on what matters most—your progress.
       </p>
-      
+
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
-        <button
-          onClick={onStartClick}
-          className="px-8 py-4 bg-gradient-to-r from-accent-indigo to-accent-emerald hover:from-accent-indigo-hover hover:to-accent-emerald-hover text-text-primary font-semibold rounded-xl shadow-lg shadow-accent-indigo/25 hover:shadow-accent-emerald/30 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 text-center cursor-pointer"
+        <Link
+          to="/register"
+          className="px-8 py-4 bg-accent-violet hover:bg-accent-violet-hover text-white font-semibold rounded-xl shadow-sm shadow-accent-violet/10 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 text-center cursor-pointer no-underline inline-block"
         >
           Start Tracking for Free
-        </button>
-        
-        <button className="px-6 py-4 bg-background-card hover:bg-background-input/60 border border-border-card text-text-muted hover:text-text-primary font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer">
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            viewBox="0 0 20 20" 
-            fill="currentColor" 
-            className="w-5 h-5 text-accent-emerald"
-          >
-            <path d="M6.3 2.841A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.269l9.324-5.89a1.5 1.5 0 0 0 0-2.538L6.3 2.84Z" />
-          </svg>
-          Watch Demo
-        </button>
+        </Link>
+
+        <Link
+          to="/features"
+          className="px-6 py-4 bg-background-card hover:bg-background-input/60 border border-border-card text-text-muted hover:text-text-primary font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer no-underline inline-block"
+        >
+          <span className="flex items-center gap-2">
+            <span>See How It Works</span>
+            <ArrowUpRight size={18} strokeWidth={1.5} className="text-accent-cyan" />
+          </span>
+        </Link>
       </div>
     </div>
   );

@@ -8,5 +8,7 @@ export type TimeLog = {
   date: string;
   hours: number;
   task: string;
-  status: "approved" | "pending";
+  status: "Approved" | "Pending";
 }
+
+
